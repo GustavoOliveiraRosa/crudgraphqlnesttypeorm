@@ -9,11 +9,19 @@ type User {
 }
 
 type Query {
-  users: [User!]!
+  findUsers: [User!]!
+  findUser(id: String!): User!
 }
 
 type Mutation {
+  updateUser(data: UpdateUserInput!, id: String!): User!
+  deleteUser(id: String!): Boolean!
   createUser(data: CreateUserInput!): User!
+}
+
+input UpdateUserInput {
+  name: String!
+  email: String!
 }
 
 input CreateUserInput {
